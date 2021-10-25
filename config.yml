@@ -1,0 +1,13 @@
+---
+title: This is the name of my test
+command: "matrix -r {rows} -c {cols} -w {width} -t {runtime} -i 1 -o verify -C -s rand -p 4 -P locked -T -n"
+output: "{rows}.{cols}.{width}.{runtime}.txt"
+variables:
+  rows: [2,8,32,128]
+  cols: [2,8,32,128]
+  width: [4096, 8192]
+  runtime: [1]
+derived:
+  loops: '.*\sT:\s+(\d+)\s.*'
+  tps: '.*\sT:\s+\d+\s+([0-9.]+)/s.*'
+...
